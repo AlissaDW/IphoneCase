@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112181213) do
+ActiveRecord::Schema.define(version: 20170112181128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(version: 20170112181213) do
     t.integer  "rating"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "casewishes", force: :cascade do |t|
-    t.integer  "case_id"
-    t.integer  "wishlist_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["case_id"], name: "index_casewishes_on_case_id", using: :btree
-    t.index ["wishlist_id"], name: "index_casewishes_on_wishlist_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -61,8 +52,6 @@ ActiveRecord::Schema.define(version: 20170112181213) do
     t.index ["user_id"], name: "index_wishlists_on_user_id", using: :btree
   end
 
-  add_foreign_key "casewishes", "cases"
-  add_foreign_key "casewishes", "wishlists"
   add_foreign_key "reviews", "cases"
   add_foreign_key "reviews", "users"
   add_foreign_key "wishlists", "users"
